@@ -1,0 +1,70 @@
+{% extends "project/base.html" %}
+{% block content %}
+    <div class="layui-container">
+        <blockquote class="layui-elem-quote">
+            <h1>CIS</h1>
+        </blockquote>
+        {# 查询学生模块 #}
+        <form action="/search" method="get">
+            <input placeholder="学生名" name="q" id="q">
+            <input type="submit" class="layui-btn" value="搜索">
+        </form>
+
+        {# 显示所有学生模块 #}
+        <table class="layui-table">
+      <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+            <th>项目编号</th>
+            <th>项目名称</th>
+            <th>登记时缩写</th>
+            <th>项目来源</th>
+            <th>项目负责人</th>
+            <th>项目结束日期</th>
+            <td>details</td>
+            <td>update</td>
+            <td>delete</td>
+        </tr>
+      </thead>
+      <tbody>
+        {%for data in datas%}
+            <tr>
+                <td>{{data.project_id}}</td>
+                <td>{{data.project_name}}</td>
+                <td>{{data.project_nickname}}</td>
+                <td>{{data.project_source}}</td>
+                <td>{{data.project_leader}}</td>
+                <td>{{data.project_deadline}}</td>
+                <td>
+                    {# 修改学生模块 #}
+                    <a href="/project/detail/{{ data.project_id }}" class="layui-btn layui-btn-normal layui-bg-green">
+                        <i class="layui-icon">&#xe623;</i>detail
+                    </a>
+                </td>
+                <td>
+                    {# 修改学生模块 #}
+                    <a href="/project/update/{{ data.project_id }}" class="layui-btn layui-btn-normal">
+                        <i class="layui-icon">&#xe642;</i>修改
+                    </a>
+                </td>
+                <td>
+                    {# 修改学生模块 #}
+                    <a href="/project/delete/{{ data.project_id }}" class="layui-btn layui-btn-normal layui-bg-red">
+                        <i class="layui-icon">&#xe640;</i>delete
+                    </a>
+                </td>
+            </tr>
+        {%endfor%}
+      </tbody>
+        </table>
+
+        {# 添加学生模块 #}
+        <a href="/addPage" class="layui-btn layui-btn-warm">
+            <i class="layui-icon">&#xe654;</i> 添加
+        </a>
+    </div>
+{% endblock %}
