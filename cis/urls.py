@@ -24,5 +24,8 @@ urlpatterns = [
     url(r'^project/detail/(?P<project_id>\w+)/$', project_views.search_project_id),  # 根据 id 查找学生的 dao 操作
     url(r'^project/update/(?P<project_id>\w+)/$', project_views.search_project_id_update),
     url(r'^project/confirm/$', project_views.update_confirm),
+    url(r'^project/delete/(?P<project_id>\w+)/$', project_views.delete_project),
+    url(r'^project/addPage/$', project_views.add_Page),
+    url(r'^project/addProject/$', project_views.add_Project),
     # url(r'^get/(?P<project_id>[0-9]*)/$', views.search_project_id)
 ]

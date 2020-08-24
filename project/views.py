@@ -32,7 +32,7 @@ def update_confirm(request):
         update_obj = Project.objects.get(project_id=pproject_id)
         datas = Project.objects.all()
         content = {'datas': datas}
-        print("render")
+        #print("render")
         return render(request, 'project/all.html', content)
 
     else:
@@ -66,34 +66,46 @@ def update_confirm(request):
 
             #return redirect('project/all.html/')
 
-        datas = Project.objects.all()
-        content = {'datas': datas}
-        print("redirect")
-        return redirect('/project/allPage')
+        project = Project.objects.filter(project_id=pproject_id)
+        content = {'data': project}
+        #print(content)
+        return render(request, 'project/project_detail.html', content)
 
 # # 1.2.前往 add 页
-# def add_page( request ):
-#     return render(request, 'student/add.html')
+def add_Page(request):
+    return render(request, 'project/project_add.html')
 #
 # # 2.增
-# @csrf_exempt
-# def add_student(request):
-#     t_name = request.POST['tName']
-#     t_age = request.POST['tAge']
-#     t_image = request.FILES['tImage']
-#     fname = os.path.join(settings.MEDIA_ROOT, t_image.name)
-#     with open(fname, 'wb') as pic:
-#         for c in t_image.chunks():
-#             pic.write(c)
-#
-#     student=student_info()
-#     student.t_name=t_name
-#     student.t_age=t_age
-#     # 存访问路径到数据库
-#     student.t_image = os.path.join("/static/media/", t_image.name)
-#     student.save()
-#
-#     return redirect('/allPage')
+@csrf_exempt
+def add_Project(request):
+    new_name = request.POST.get('project_name')
+    new_id = request.POST.get('project_id')
+    new_name_nickname = request.POST.get('project_nickname')
+    new_leader = request.POST.get('project_leader')
+    new_source = request.POST.get('project_source')
+    new_start_time = request.POST.get('project_start_time')
+    new_finish_time = request.POST.get('project_deadline')
+    new_kpi = request.POST.get('project_kpi')
+    new_finish_kpi = request.POST.get('project_finish_kpi')
+    new_paper = request.POST.get('project_paper')
+    new_remarks = request.POST.get('project_remarks')
+
+    add_obj = Project()
+    add_obj.project_id = new_id
+    add_obj.project_name = new_name
+    add_obj.project_nickname = new_name_nickname
+    add_obj.project_leader = new_leader
+    add_obj.project_source = new_source
+    add_obj.project_start_time = new_start_time
+    add_obj.project_deadline = new_finish_time
+    add_obj.project_kpi = new_kpi
+    add_obj.project_finish_kpi = new_finish_kpi
+    add_obj.project_paper = new_paper
+    add_obj.project_remarks = new_remarks
+
+    add_obj.save()  # 一定要执行，提交数据库保存~~~~~~
+
+    return redirect('/project/allPage')
 #
 # # 3.1.查 - name
 # def search_student(request):
@@ -124,6 +136,6 @@ def update_confirm(request):
 #     return redirect('/allPage')
 #
 # # 5.删
-# def delete_student(request,student_id):
-#     student_info.objects.filter(id=student_id).delete()
-#     return redirect('/allPage')
+def delete_project(request,project_id):
+    Project.objects.filter(project_id=project_id).delete()
+    return redirect('/project/allPage')

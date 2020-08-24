@@ -1,0 +1,33 @@
+class User(models.Model):
+    user_email = models.CharField(max_length=100, default='', primary_key=True, verbose_name='用户邮箱')
+    user_password = models.CharField(max_length=100, default='', verbose_name='用户密码')
+    username = models.CharField(max_length=20, default='', verbose_name='用户姓名')
+    user_type = models.IntegerField(default=0,verbose_name='用户类型')
+
+class Paper_info(models.Model):
+    paper_id = models.AutoField(primary_key=True, verbose_name='论文编号')
+    paper_name = models.CharField(max_length=255, default='', verbose_name='论文名称')
+    paper_periodical = models.CharField(max_length=255, default='', verbose_name='期刊信息')
+    paper_type = models.CharField(max_length=255, default='', verbose_name='论文类型')
+    paper_sci = models.CharField(max_length=255, default='', verbose_name='sci分区')
+    paper_sci = models.CharField(max_length=255, default='', verbose_name='sci分区')
+    paper_factor = models.CharField(max_length=255, default='', verbose_name='影响因子')
+    paper_first = models.CharField(max_length=255, default='', verbose_name='第一作者')
+    paper_author_list = models.CharField(max_length=255, default='', verbose_name='作者列表')
+    paper_corr_author = models.CharField(max_length=255, default='', verbose_name='通讯作者')
+    paper_time = models.DateField(auto_now_add=True， verbose_name='发表时间')
+
+
+
+class Project(models.Model):
+    project_id = models.CharField(primary_key=True, max_length=255, default='', verbose_name='项目编号')
+    project_nickname = models.CharField(max_length=255, default='', verbose_name='登记时缩写')
+    project_name = models.CharField(max_length=255, default='', verbose_name='项目名称')
+    project_source = models.CharField(max_length=255, default='', verbose_name='项目来源')
+    project_leader = models.CharField(max_length=255, default='', verbose_name='项目负责人')
+    project_start_time = models.DateField(auto_now_add=True， verbose_name='项目开始日期')
+    project_deadline = models.DateField(auto_now_add=True， verbose_name = '项目结束日期')
+    project_kpi = models.IntegerField(default=0,verbose_name='指标数量')
+    project_finish_kpi = models.IntegerField(default=0,verbose_name='完成指标数量')
+    project_paper = models.IntegerField(default=0,verbose_name='挂靠论文序号')
+    project_remarks = models.CharField(max_length=255, default='', verbose_name='备注')

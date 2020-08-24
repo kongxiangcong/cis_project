@@ -4,58 +4,56 @@
         <blockquote class="layui-elem-quote">
             <h1>Details Page</h1>
         </blockquote>
-        <form class="layui-form" action="" >
+        <form class="layui-form" action="/project/addProject/" method="post" enctype="multipart/form-data">
           <div class="layui-form-item" >
-            {%for project in data%}
 
             <div class="layui-form-item">
             <hr class="layui-bg-green">
                 <div class="layui-inline">
                     <label class="layui-form-label" style="margin-top: 20px;">项目名称</label>
                     <div class="layui-input-block">
-                        <input type="text" name="project_name" id="project_name" style="margin-top: 20px; width: 1000px" class="layui-input" readonly="readonly" value="{{ project.project_name }}"/>
+                        <input type="text" name="project_name" id="project_name" style="margin-top: 20px; width: 1000px" class="layui-input" placeholder="请输入项目名称"/>
                     </div>
-                </div>
+                </div> {# 项目名称 #}
 
             <div class="layui-form-item" >
                 <div class="layui-inline">
                     <label class="layui-form-label" style="margin-top: 20px;">项目编号</label>
                     <div class="layui-input-block" >
-                        <input type="text" name="project_id" id="project_id" style="margin-top: 20px; width: 300px" class="layui-input" readonly="readonly" value="{{ project.project_id}}" />
+                        <input type="text" name="project_id" id="project_id" style="margin-top: 20px; width: 300px" class="layui-input" placeholder="请输入项目编号" />
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label" style="margin-top: 20px; margin-left: 100px;">登记时缩写</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="project_nickname" id="project_nickname" style="margin-top: 20px; width: 300px" class="layui-input" readonly="readonly" value="{{ project.project_nickname }}"/>
+                        <input type="text" name="project_nickname" id="project_nickname" style="margin-top: 20px; width: 300px" class="layui-input" placeholder="登记时缩写（可空）"/>
                     </div>
                 </div>
-            </div>
+            </div>  {# 项目编号和nickname #}
 
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label" style="margin-top: 20px;">项目负责人</label>
                     <div class="layui-input-block">
-                        <input type="text" name="project_leader" id="project_leader" style="margin-top: 20px; width: 300px" class="layui-input" readonly="readonly" value="{{ project.project_leader }}"/>
+                        <input type="text" name="project_leader" id="project_leader" style="margin-top: 20px; width: 300px" class="layui-input" placeholder="请输入项目负责人"/>
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label" style="margin-top: 20px; margin-left: 100px;">项目来源</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="project_source" id="project_source" style="margin-top: 20px; width: 300px" class="layui-input" readonly="readonly" value="{{ project.project_source }}"/>
+                        <input type="text" name="project_source" id="project_source" style="margin-top: 20px; width: 300px" class="layui-input" placeholder="请输入项目来源"/>
                     </div>
                 </div>
-            </div>
-
+            </div>  {# 项目负责人和项目来源 #}
 
             <div class="layui-inline">
               <label class="layui-form-label" style="width: 150px; margin-top: 20px" >项目开始日期-结束日期</label>
               <div class="layui-input-inline" >
-                  <input type="text" name="project_start_time" id="project_start_time" style="margin-top: 20px;" class="layui-input" readonly="readonly" value="{{ project.project_start_time }}"/>
+                  <input type="date" name="project_start_time" id="project_start_time" style="margin-top: 20px;" class="layui-input" placeholder="yy-mm-dd"/>
               </div>
               <div class="layui-form-mid" style="margin-top: 20px;">-</div>
               <div class="layui-input-inline">
-                <input type="text" name="project_deadline" id="project_deadline" style="margin-top: 20px;" class="layui-input" readonly="readonly" value="{{ project.project_deadline}}" />
+                <input type="date" name="project_deadline" id="project_deadline" style="margin-top: 20px;" class="layui-input" placeholder="yy-mm-dd" />
               </div>
             </div>
 
@@ -63,13 +61,13 @@
                 <div class="layui-inline">
                     <label class="layui-form-label" style="margin-top: 20px;">指标数量</label>
                     <div class="layui-input-block">
-                        <input type="text" name="project_kpi" id="project_kpi" class="layui-input" style="margin-top: 20px;width: 300px" readonly="readonly" value="{{ project.project_kpi}}"/>
+                        <input type="text" name="project_kpi" id="project_kpi" class="layui-input" style="margin-top: 20px;width: 300px" placeholder="请输入指标数量"/>
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label" style="width: 120px; margin-top: 20px; margin-left: 60px">完成指标数量</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="project_finish_kpi" id="project_finish_kpi" style="margin-top: 20px;width: 300px" class="layui-input" readonly="readonly" value="{{ project.project_finish_kpi }}"/>
+                        <input type="text" name="project_finish_kpi" id="project_finish_kpi" style="margin-top: 20px;width: 300px" class="layui-input" value="0"/>
                     </div>
                 </div>
             </div>
@@ -78,7 +76,7 @@
                 <div class="layui-inline" >
                     <label class="layui-form-label" style="margin-top: 20px; width: 90px;">挂靠论文序号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="project_paper" id="project_paper" class="layui-input" style="margin-top: 20px; width: 120px" readonly="readonly" value="{{ project.project_paper }}"/>
+                        <input type="text" name="project_paper" id="project_paper" class="layui-input" style="margin-top: 20px; width: 120px" placeholder="请选择挂靠的论文序号"/>
                     </div>
                 </div>
             </div>
@@ -86,21 +84,21 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">备注</label>
                 <div class="layui-input-block">
-                    <textarea name="project_remarks" id="project_remarks" readonly="readonly" class="layui-textarea">{{ project.project_remarks }}</textarea>
+                    <textarea name="project_remarks" id="project_remarks"  class="layui-textarea" placeholder="备注"></textarea>
                 </div>
             </div>
 
             <div align="center" style="margin-top: 80px">
-                <a href="/project/update/{{ project.project_id }}" class="layui-btn layui-bg-blue layui-btn-normal">
-                    <i class="layui-icon">&#xe602;</i> 编辑修改
-                </a>
+
+                <button type="submit" class="layui-btn layui-bg-blue layui-btn-normal">
+                    <i class="layui-icon">&#xe602;</i> 添加
+                </button>
 
                 <a href="/project/allPage" class="layui-btn layui-bg-cyan layui-btn-normal">
-                    <i class="layui-icon">&#xe68e;</i> 返回
+                    <i class="layui-icon">&#xe68e;</i> 返回主页
                 </a>
             </div>
 
-          {% endfor %}
           </div>
           </div>
         </form>

@@ -42,19 +42,19 @@
                 <td>
                     {# 修改学生模块 #}
                     <a href="/project/detail/{{ data.project_id }}" class="layui-btn layui-btn-normal layui-bg-green">
-                        <i class="layui-icon">&#xe623;</i>detail
+                        <i class="layui-icon">&#xe623;</i>详细
                     </a>
                 </td>
                 <td>
-                    {# 修改学生模块 #}
+                    {# 修改project模块 #}
                     <a href="/project/update/{{ data.project_id }}" class="layui-btn layui-btn-normal">
-                        <i class="layui-icon">&#xe642;</i>修改
+                        <i class="layui-icon">&#xe642;</i>编辑
                     </a>
                 </td>
                 <td>
-                    {# 修改学生模块 #}
+                    {# 删除project模块 #}
                     <a href="/project/delete/{{ data.project_id }}" class="layui-btn layui-btn-normal layui-bg-red">
-                        <i class="layui-icon">&#xe640;</i>delete
+                        <i class="layui-icon">&#xe640;</i>删除
                     </a>
                 </td>
             </tr>
@@ -63,7 +63,7 @@
         </table>
 
         {# 添加学生模块 #}
-        <a href="/addPage" class="layui-btn layui-btn-warm">
+        <a href="/project/addPage" class="layui-btn layui-btn-warm">
             <i class="layui-icon">&#xe654;</i> 添加
         </a>
     </div>
